@@ -6,6 +6,7 @@
 #===============================================================================
 
 use v5.38;
+use open qw(:std :encoding(utf8));
 
 sub sort_lines_from_file($file) {
     do {
