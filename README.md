@@ -5,6 +5,7 @@ These are my dotfiles for Kubuntu. Feel free to use them if you want.
 ## ⚙️ configs
 
 - Neovim
+- Firefox ([Arkenfox](https://github.com/arkenfox/user.js) overrides)
 - Bash
 - NetworkManager
 - systemd-resolved
