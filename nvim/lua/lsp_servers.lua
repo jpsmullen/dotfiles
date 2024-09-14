@@ -8,5 +8,5 @@ return {
     "lua_ls",
     "perlnavigator",
     "pyright",
-    "tsserver",
+    "ts_ls",
 }
