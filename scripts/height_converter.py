@@ -36,7 +36,7 @@ def main() -> None:
         description="Convert heights from cm to feet and inches.",
         add_help=True,
     )
-    
+
     parser.add_argument(
         "heights",
         help="heights in cm (e.g. 182, 160, 180.5, 172.75)",

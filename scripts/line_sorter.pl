@@ -46,7 +46,10 @@ if (@ARGV) {
         for my $i (1 .. scalar @lines) {
             print "$i. $lines[$i - 1]";
         }
+
     }
+
+    say "=" x 50;
 } else {
     # If no files are specified, sort from STDIN
     #
