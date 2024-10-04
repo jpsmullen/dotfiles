@@ -41,6 +41,7 @@ def main() -> None:
         "heights",
         help="heights in cm (e.g. 182, 160, 180.5, 172.75)",
         nargs="+",
+        type=float,
         metavar="CM_HEIGHTS",
     )
 
@@ -55,15 +56,12 @@ def main() -> None:
     args = parser.parse_args(sys.argv[1:] or ["-h"])
 
     for cm_height in args.heights:
-        try:
-            feet, inches = cm_to_ft_in(float(cm_height), args.approximate)
+        feet, inches = cm_to_ft_in(cm_height, args.approximate)
 
-            if args.approximate:
-                print(f"{cm_height}cm is approximately {feet}'{inches}\"")
-            else:
-                print(f"{cm_height}cm is roughly {feet}'{inches}\"")
-        except ValueError:
-            continue
+        if args.approximate:
+            print(f"{cm_height}cm is approximately {feet}'{inches}\"")
+        else:
+            print(f"{cm_height}cm is roughly {feet}'{inches}\"")
 
 
 if __name__ == "__main__":
