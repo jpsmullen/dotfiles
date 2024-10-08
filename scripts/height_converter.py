@@ -8,7 +8,10 @@ import argparse
 import sys
 
 
-def cm_to_ft_in(cm_height: float, approximate: bool) -> tuple[int, int | float]:
+def cm_to_ft_in(
+    cm_height: float,
+    rounding: int | None,
+) -> tuple[int, int | float]:
     """Convert centimetres to feet and inches."""
 
     # 1 inch == 2.54cm
@@ -17,13 +20,18 @@ def cm_to_ft_in(cm_height: float, approximate: bool) -> tuple[int, int | float]:
     # 1 foot == 12 inches
     feet = int(total_inches / 12)
 
-    # Inches are rounded up by default
-    inches = total_inches % 12 if approximate else round(total_inches % 12)
+    if rounding is not None:
+        inches = round(total_inches % 12, rounding)
+    else:
+        inches = total_inches % 12
 
-    # Round things like 5'12" to 6'0" (won't run if approximate is True)
+    # Fix things like 5'12" instead of 6'0"
     if inches == 12:
         feet += 1
         inches = 0
+
+    # e.g. return 3 instead of 3.0
+    inches = int(inches) if inches.is_integer() else inches
 
     return feet, inches
 
@@ -46,22 +54,28 @@ def main() -> None:
     )
 
     parser.add_argument(
-        "-a",
-        "--approximate",
-        help="get the approximate measurement (i.e. not rounded)",
-        action="store_true",
+        "-r",
+        "--round",
+        help="round the result to X decimal places (default: 0)",
+        nargs="?",
+        type=int,
+        const=0,
+        metavar="X",
     )
 
     # Show the help message and exit if no arguments are given
     args = parser.parse_args(sys.argv[1:] or ["-h"])
 
     for cm_height in args.heights:
-        feet, inches = cm_to_ft_in(cm_height, args.approximate)
+        feet, inches = cm_to_ft_in(cm_height, args.round)
 
-        if args.approximate:
-            print(f"{cm_height}cm is approximately {feet}'{inches}\"")
-        else:
+        # e.g. print 172 instead of 172.0
+        cm_height = int(cm_height) if cm_height.is_integer() else cm_height
+
+        if args.round is not None:
             print(f"{cm_height}cm is roughly {feet}'{inches}\"")
+        else:
+            print(f"{cm_height}cm is approximately {feet}'{inches}\"")
 
 
 if __name__ == "__main__":
