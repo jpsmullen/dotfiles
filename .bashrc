@@ -2,7 +2,7 @@
 alias vi="nvim"
 alias q="exit"
 alias c="clear"
-alias ls="ls -gh --color=auto --time-style=long-iso"
+alias ls="ls -gh --color=auto --time-style=long-iso --group-directories-first"
 alias la="ls -A"
 alias src="source ~/.bashrc"
 alias del="cat /dev/null > ~/.bash_history"
