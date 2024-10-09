@@ -1,6 +1,6 @@
 # 📁 dotfiles
 
-These are my dotfiles for Kubuntu. Feel free to use them if you want.
+This repo contains my dotfiles for Kubuntu. Feel free to use them if you want.
 
 ## ⚙️ configs
 
@@ -9,7 +9,6 @@ These are my dotfiles for Kubuntu. Feel free to use them if you want.
 - Bash
 - NetworkManager
 - systemd-resolved
-- Miscellaneous scripts
 
 ## ⚖️ licence
 
