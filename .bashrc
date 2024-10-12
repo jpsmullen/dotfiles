@@ -20,3 +20,4 @@ export PS1="${orange}[\u@\h] ${blue}\w/ ${orange}\$ \[\e[0m\]"
 export LS_COLORS="di=01;38;05;109"
 export EDITOR="nvim"
 export GPG_TTY=$(tty)
+export QT_SELECT="qt6"
